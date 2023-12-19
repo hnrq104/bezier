@@ -1,6 +1,9 @@
 package interpolation
 
-import "splines/matrix"
+import (
+	"math"
+	"splines/matrix"
+)
 
 type Curve struct {
 	n       int //number of functions (one less than number of points)
@@ -77,4 +80,20 @@ func FindDerivatives(Y []float64) []float64 {
 func Interpolate(X []float64) Curve {
 	D := FindDerivatives(X)
 	return NewCurve(X, D)
+}
+
+// becareful how you use this function, x will only have sensible data
+// between [0,1]
+func (c Curve) At(i int, x float64) float64 {
+	if i < 0 || i >= c.n {
+		return math.NaN()
+	}
+
+	// really ugly way to return a + bx + cx^2 + dx^3
+	return c.Splines[4*i] + x*(c.Splines[4*i+1]+x*(c.Splines[4*i+2]+x*c.Splines[4*i+3]))
+
+}
+
+func (c Curve) Len() int {
+	return c.n
 }

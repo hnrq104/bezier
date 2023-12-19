@@ -44,7 +44,9 @@ func DrawLine(x0, y0, x1, y1 int) {
 	}
 }
 
-func DrawLineP(p0, p1 image.Point, c color.Color, img draw.Image) {
+func DrawLineP(p0, p1 image.Point, c color.Color, thickness int, img draw.Image) {
+	// log.Print(c)
+
 	dx := abs(p0.X - p1.X)
 	dy := abs(p0.Y - p1.Y)
 
@@ -59,7 +61,13 @@ func DrawLineP(p0, p1 image.Point, c color.Color, img draw.Image) {
 
 	err := dx - dy
 	for {
-		img.Set(p0.X, p0.Y, c)
+
+		for i := -thickness / 2; i <= thickness/2; i++ {
+			for j := -thickness / 2; j <= thickness/2; j++ {
+				img.Set(p0.X+i, p0.Y+j, c)
+			}
+		}
+
 		if p0.X == p1.X && p0.Y == p1.Y {
 			break
 		}

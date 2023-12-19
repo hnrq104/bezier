@@ -20,9 +20,7 @@ func (s *sortPolarPoints) Less(i, j int) bool {
 	return Direction(s.origin, s.points[j], s.points[i]) > 0
 }
 
-// (AINDA NÃO IMPLEMENTADO) Diferente do implementado anteriormente, eu vou permitir pontos colineares (mas vou ordena-los corretamente)
-// se não ao tirar a proxima layer ficará ruim
-
+// Retorna um polígono convexo que encompassa os pontos
 func GrahamScan(points []image.Point) []image.Point {
 	if len(points) < 3 {
 		return nil
