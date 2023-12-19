@@ -1,6 +1,6 @@
 package interpolation
 
-import "bezier/matrix"
+import "splines/matrix"
 
 type Curve struct {
 	n       int //number of functions (one less than number of points)

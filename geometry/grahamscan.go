@@ -1,7 +1,6 @@
 package geometry
 
 import (
-	"fmt"
 	"image"
 	"sort"
 )
@@ -48,8 +47,6 @@ func GrahamScan(points []image.Point) []image.Point {
 		}
 		sorted = append(sorted, farthest)
 	}
-
-	fmt.Println(sorted)
 
 	stack := make([]image.Point, 0, len(points)/4)
 	stack = append(stack, points[0], sorted[0], sorted[1])
