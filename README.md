@@ -71,17 +71,17 @@ Satisfazendo as seguintes propriedades:
 
 $f_i(0) = y_i$
 
-$f_i(1) = y_{i+1}$
+$$f_i(1) = y_{i+1}$$
 
-$f'_i(1) = f'_{i+1}(0)$
+$$f^{(1)}_i(1) = f^{(1)}_{i+1}(0)$$
 
-$f''_i(1) = f''_{i+1}(0)$
+$$f^{(2)}_i(1) = f^{(2)}_{i+1}(0)$$
 
 Para que a curva seja **natural**, vamos obrigar que:
 
-$f''_0(0) = 0$
+$$f_0(0) = 0$$
 
-$f''_{n-1}(1) = 0$
+$$f''_{n-1}(1) = 0$$
 
 Perceba que há uma falha em nossa construção, estamos ignorando completamente os $x_i$. Isso é fácil de resolver no entanto, se você quer calcular o valor de $x_i \leq x \leq x_{i+1}$, basta considerar:
 
@@ -101,9 +101,9 @@ $$f_i(0) = y_i = a_i$$
 
 $$f_i(1) = y_{i+1} = a_i + b_i + c_i + d_i$$
 
-$$f_i'(0) = D_i = b_i$$
+$$f_i^{(1)}(0) = D_i = b_i$$
 
-$$f_i'(1) = D_{i+1} = b_i + 2c_i + 3d_i$$
+$$f_i{(1)}(1) = D_{i+1} = b_i + 2c_i + 3d_i$$
 
 Logo, resolvendo para $a_i,b_i,c_i,d_i$ obtemos:
 
