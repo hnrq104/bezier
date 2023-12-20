@@ -78,19 +78,19 @@ $$f_i(0) = y_i$$
 $$f_i(1) = y_{i+1}$$
 
 
-$$f'_i(1) = f'_{i+1}(0)$$
+$$f_i''(1) = f'_{i+1}(0)$$
 
 
-$$f''_i(1) = f''_{i+1}(0)$$
+$$f_i''(1) = f''_{i+1}(0)$$
 
 
 Para que a curva seja **natural**, vamos obrigar que:
 
 
-$$f''_0(0) = 0$$
+$$f_0''(0) = 0$$
 
 
-$$f''_{n-1}(1) = 0$$
+$$f_{n-1}''(1) = 0$$
 
 
 Perceba que há uma falha em nossa construção, estamos ignorando completamente os $x_i$. Isso é fácil de resolver no entanto, se você quer calcular o valor de $x_i \leq x \leq x_{i+1}$, basta considerar:
@@ -152,13 +152,10 @@ $$ D_{i-1} + 4D_i +D_{i+1} = 3(y_{i+1} - y{i-1}) $$
 Já que queremos que as segundas derivadas sejam contínuas temos:
 
 
-$$ f''_i(x) = 2c_i + 6d_i $$
+$$ f_i''(x) = 2c_i + 6d_i $$
 
 
-$$ f''_{i-1}(1) = 2c_{i-1} + 6d_{i-1} = 2c_i = f''_i(0)
-
-
-$$
+$$ f_{i-1}''(1) = 2c_{i-1} + 6d_{i-1} = 2c_i = f_i''(0)$$
 
 
 $$ c_{i-1} + 3d_{i-1} = c_i $$
@@ -174,7 +171,7 @@ $$ = 3\cdot(y_{i+1} - y_i) -D_{i+1} - 2D_i$$
 E com bastante manipulação isso se torna justamente:
 
 
-$$ D_{i-1} + 4D_i +D_{i+1} = 3(y_{i+1} - y{i-1}) $$
+$$ D_{i-1} + 4D_i +D_{i+1} = 3(y_{i+1} - y_{i-1}) $$
 
 
 Que é muito bonita!!!
@@ -195,10 +192,10 @@ $$ D_{n-1} + 2D_n = 3(y_n - y_{n-1}) $$
 Para esses valores, vamos lembrar que:
 
 
-$$f''_0(0) = 0 = c_0$$
+$$f_0''(0) = 0 = c_0$$
 
 
-$$f''_{n-1}(1) = 0 = 2(c_{n-1} + 3d_{n-1})$$
+$$f_{n-1}''(1) = 0 = 2(c_{n-1} + 3d_{n-1})$$
 
 
 Temos:
