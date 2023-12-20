@@ -236,3 +236,60 @@ Depois disso, eu poderia projetar as curvas no plano $xy$, achatando o que eu co
 Na minha mente veio a seguinte imagem:
 
 ![helix](readmestuff/Helix.png)
+
+Se achatarmos a mola, temos uma interpoalação dos pontos que ela passa no eixo $xy$.
+
+Foi isso que eu fiz, resolvemos duas curvas $f_x$ e $f_y$. Passamos de ponto em ponto, ficamos atentos aos valores de $x,y$ e plotamos de acordo.
+
+![10000 pontos](readmestuff/10000points.png)
+
+Interpolando os poligonos convexos por splines (na verdade são linhas em 3 dimensões achatadas), se tornam curvas fechadas. 
+
+(Fiquei muito feliz com isso!).
+
+### O exemplo
+
+Vou falar bem rapidamente da surpresa algébrica que aparece na procura por esses polígonos convexos.
+
+Como vimos na aula do Collier e da Marianty, o produto vetorial $v_1 \times v_2$ dois vetores no plano é a area do paralelogramo formado entre eles.
+
+Mas uma coisa é interessante, se esse produto é positivo, então $v_1$ está `no sentido horario` ou `a direita` de $v_2$. 
+
+O Scan de Graham consiste em andar pelos pontos do plano **sempre num mesmo sentido**.
+
+![Graham](readmestuff/Graham.png)
+
+Se começarmos do ponto mais abaixo, e mantemos cuidados para sempre fazer curvas `para a esquerda`, conseguimos encontrar o polígono convexo que cobre todos os pontos.
+
+No nosso caso, os vetores só tomam valores em $\mathbb{Z} \times \mathbb{Z}$, pois são pixeis.
+
+Depois, com o que vimos anteriormente, é facil encontrar uma curva bonita que passe pelos vertices do polígono.
+
+### Tempo
+
+A nossa interpolação custou $O(n)$, o algoritmo de Graham custa $O(n\cdot log(n))$ para n pontos. Logo, o algoritmo de Graham domina o tempo de execução.
+
+No pior caso (em média é um pouco mais rápido), a gente remove só 3 pontos por camada de pontos. Indicando que temos que rodar o algoritmo de Graham $n/3$ vezes.
+
+Mas sendo bem desleixado sobre esses cálculos, percebemos um limite superior do tempo em $O(n^2 \cdot log(n))$. (Que eu considero um sucesso!)
+
+Tem como ser assimptóticamente mais veloz, outros algoritmos como Jarvis's march podem fazer tudo isso rodar em $O(n^2)$, mas ainda sim, as constantes são um pouco mais altas e ele é bem mais chato de implementar, então fica para o futuro.
+
+Além disso, é possível paralelizar o código ainda, principalmente na parte de plotting, tornando-o ainda mais rápido. 
+
+De toda forma, estou bem satisfeito com os resultados, para gerar a imagem com 30000 pontos ele demora meio segundo.
+
+--- 
+
+Dúvidas e sugestões podem ser mandadas!
+
+Eis a imagem com 30000 pontos!
+
+![300000](readmestuff/30000.png)
+
+--- 
+
+Para rodar, deve-se compilar `layers.go` em `cmd/polygonlayers` e rodar, algumas flags podem ser setadas com `--help`.
+
+--- 
+
