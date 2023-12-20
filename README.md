@@ -63,29 +63,41 @@ Queremos interpolar $n+1$ pontos $(x_i,y_i), i = 0,1, ...n$ em uma curva suave q
 
 Definiremos $n$ funções cúbicas da seguinte forma:
 
+
 $$f_i(x) = a_i + b_ix + c_ix^2 + d_ix^3$$
+
 
 Para $i = 0,1,2,...,n-1$
 
 Satisfazendo as seguintes propriedades:
 
-$f_i(0) = y_i$
+
+$$f_i(0) = y_i$$
+
 
 $$f_i(1) = y_{i+1}$$
 
-$$f^{(1)}_i(1) = f^{(1)}_{i+1}(0)$$
 
-$$f^{(2)}_i(1) = f^{(2)}_{i+1}(0)$$
+$$f'_i(1) = f'_{i+1}(0)$$
+
+
+$$f''_i(1) = f''_{i+1}(0)$$
+
 
 Para que a curva seja **natural**, vamos obrigar que:
 
-$$f_0(0) = 0$$
+
+$$f''_0(0) = 0$$
+
 
 $$f''_{n-1}(1) = 0$$
 
+
 Perceba que há uma falha em nossa construção, estamos ignorando completamente os $x_i$. Isso é fácil de resolver no entanto, se você quer calcular o valor de $x_i \leq x \leq x_{i+1}$, basta considerar:
 
+
 $$f_i(\frac{x - x_i}{x_{i+1} - x_i})$$
+
 
 Mas não vamos nos preocupar muito com isso, não virá ao caso com os nossos problemas.
 
@@ -97,19 +109,30 @@ Será que conseguimos calcular rapidamente os coeficientes das nossas funções 
 
 Usando as 4 primeiras equações acima temos:
 
+
 $$f_i(0) = y_i = a_i$$
+
 
 $$f_i(1) = y_{i+1} = a_i + b_i + c_i + d_i$$
 
-$$f_i^{(1)}(0) = D_i = b_i$$
 
-$$f_i{(1)}(1) = D_{i+1} = b_i + 2c_i + 3d_i$$
+$$f_i'(0) = D_i = b_i$$
+
+
+$$f_i'(1) = D_{i+1} = b_i + 2c_i + 3d_i$$
 
 Logo, resolvendo para $a_i,b_i,c_i,d_i$ obtemos:
 
+
 $$a_i = y_i$$
+
+
 $$b_i = D_i$$
+
+
 $$c_i = 3\cdot(y_{i+1} - y_i) -D_{i+1} - 2D_i$$
+
+
 $$d_i = - 2\cdot(y_i - y_{i+1}) + D_{i+1} + D_i$$
 
 Portanto, se temos todos os valores $y_i$ e $D_i$, conseguimos calcular os $4n$ coeficientes em tempo linear, com essa sequência de operações. (isso é feito em `interpolation/curve.go`)
@@ -127,18 +150,32 @@ $$ D_{i-1} + 4D_i +D_{i+1} = 3(y_{i+1} - y{i-1}) $$
 
 
 Já que queremos que as segundas derivadas sejam contínuas temos:
+
+
 $$ f''_i(x) = 2c_i + 6d_i $$
-$$ f''_{i-1}(1) = 2c_{i-1} + 6d_{i-1} = 2c_i = f''_i(0)$$
+
+
+$$ f''_{i-1}(1) = 2c_{i-1} + 6d_{i-1} = 2c_i = f''_i(0)
+
+
+$$
+
+
 $$ c_{i-1} + 3d_{i-1} = c_i $$
 
+
 Podemos usar as equações do **Problema 1** para obter, substituindo $c_{i-1},d_{i-1},c_i$:
+
 
 $$ 3\cdot(y_i - y_{i-1}) -D_i - 2D_{i-1} + 3\cdot(- 2\cdot(y_{i-1} - y_i) + D_i + D_{i-1}) =$$ 
 $$ = 3\cdot(y_{i+1} - y_i) -D_{i+1} - 2D_i$$
 
+
 E com bastante manipulação isso se torna justamente:
 
+
 $$ D_{i-1} + 4D_i +D_{i+1} = 3(y_{i+1} - y{i-1}) $$
+
 
 Que é muito bonita!!!
 
@@ -147,16 +184,28 @@ Que é muito bonita!!!
 Mas o que acontece nas pontas? Quando $i=0$ ou $i = n$?
 
 Vamos mostrar que:
+
+
 $$ 2D_0 + D_1 = 3(y_1 - y_0) $$
+
+
 $$ D_{n-1} + 2D_n = 3(y_n - y_{n-1}) $$ 
 
+
 Para esses valores, vamos lembrar que:
+
+
 $$f''_0(0) = 0 = c_0$$
+
+
 $$f''_{n-1}(1) = 0 = 2(c_{n-1} + 3d_{n-1})$$
+
 
 Temos:
 
+
 $$2D_0 + D_1 = 3b_0 + 2c_0 + 3d_0 = 3b_0 + 3d_0 = 3(y_1 - y_0)$$
+
 
 O mesmo tipo de lógica serve para msotrar a segunda equação.
 
@@ -219,7 +268,9 @@ O que vimos até agora, (que é super rapido de calcular) substitui o que vimos 
 
 Conseguimos interpolar pontos $(x_i,y_i)$ contanto que tenhamos:
 
+
 $$x_0 < x_1 < \cdots < x_{n-1} < x_n$$
+
 
 Mas nossos pontos estão no plano, eles dão voltas e a curva deve ser fechada!
 
