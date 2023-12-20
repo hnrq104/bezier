@@ -63,17 +63,17 @@ Queremos interpolar $n+1$ pontos $(x_i,y_i), i = 0,1, ...n$ em uma curva suave q
 
 Definiremos $n$ funções cúbicas da seguinte forma:
 
-$$ f_i(x) = a_i + b_ix + c_ix^2 + d_ix^3$$
+$$f_i(x) = a_i + b_ix + c_ix^2 + d_ix^3$$
 
 Para $i = 0,1,2,...,n-1$
 
 Satisfazendo as seguintes propriedades:
 
-$$  f_i(0) = y_i $$
+$$f_i(0) = y_i$$
 
-$$  f_i(1) = y_{i+1} $$
+$$f_i(1) = y_{i+1}$$
 
-$$  f'_i(1) = f'_{i+1}(0) $$
+$$f'_i(1) = f'_{i+1}(0)$$
 
 $$  f''_i(1) = f''_{i+1}(0) $$
 
@@ -109,10 +109,11 @@ $$ f_i'(1) = D_{i+1} = b_i + 2c_i + 3d_i $$
 
 Logo, resolvendo para $a_i,b_i,c_i,d_i$ obtemos:
 
-$$ a_i = y_i $$
-$$ b_i = D_i $$
-$$ c_i = 3\cdot(y_{i+1} - y_i) -D_{i+1} - 2D_i $$
-$$ d_i = - 2\cdot(y_i - y_{i+1}) + D_{i+1} + D_i $$
+$$a_i = y_i$$
+$$b_i = D_i$$
+$$c_i = 3\cdot(y_{i+1} - y_i) -D_{i+1} - 2D_i$$
+$$d_i = - 2\cdot(y_i - y_{i+1}) + D_{i+1} + D_i$$
+
 Portanto, se temos todos os valores $y_i$ e $D_i$, conseguimos calcular os $4n$ coeficientes em tempo linear, com essa sequência de operações. (isso é feito em `interpolation/curve.go`)
 
 #### Problema 2.

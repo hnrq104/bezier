@@ -1,6 +1,5 @@
 package matrix
 
-//https://mathworld.wolfram.com/CubicSpline.html
 import (
 	"fmt"
 )
