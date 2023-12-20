@@ -69,19 +69,19 @@ Para $i = 0,1,2,...,n-1$
 
 Satisfazendo as seguintes propriedades:
 
-$$f_i(0) = y_i$$
+$f_i(0) = y_i$
 
-$$f_i(1) = y_{i+1}$$
+$f_i(1) = y_{i+1}$
 
-$$f'_i(1) = f'_{i+1}(0)$$
+$f'_i(1) = f'_{i+1}(0)$
 
-$$f''_i(1) = f''_{i+1}(0)$$
+$f''_i(1) = f''_{i+1}(0)$
 
 Para que a curva seja **natural**, vamos obrigar que:
 
-$$f''_0(0) = 0$$
+$f''_0(0) = 0$
 
-$$f''_{n-1}(1) = 0$$
+$f''_{n-1}(1) = 0$
 
 Perceba que há uma falha em nossa construção, estamos ignorando completamente os $x_i$. Isso é fácil de resolver no entanto, se você quer calcular o valor de $x_i \leq x \leq x_{i+1}$, basta considerar:
 
@@ -182,8 +182,7 @@ D_2\\
 D_{n-1}\\
 D_{n}
 \end{bmatrix}
-
-= 3\cdot
+= &3\cdot
 \begin{bmatrix}
 y_1 - y_0\\
 y_2 - y_0\\
@@ -194,6 +193,7 @@ y_n - y_{n-1}\\
 \end{bmatrix}
 \end{align*}
 $$
+
 
 E esse sistema é muito bonito.
 
@@ -218,7 +218,8 @@ Em conclusão, consiguimos encontrar os coeficientes de cada $f_i$ em $O(n)$.
 O que vimos até agora, (que é super rapido de calcular) substitui o que vimos em sala de maneira bem elegante. Mas não é suficiente para resolver nosso problema.
 
 Conseguimos interpolar pontos $(x_i,y_i)$ contanto que tenhamos:
-$$ x_0 < x_1 < \cdots < x_{n-1} < x_n $$
+
+$$x_0 < x_1 < \cdots < x_{n-1} < x_n$$
 
 Mas nossos pontos estão no plano, eles dão voltas e a curva deve ser fechada!
 
