@@ -75,19 +75,17 @@ $$f_i(1) = y_{i+1}$$
 
 $$f'_i(1) = f'_{i+1}(0)$$
 
-$$  f''_i(1) = f''_{i+1}(0) $$
+$$f''_i(1) = f''_{i+1}(0)$$
 
 Para que a curva seja **natural**, vamos obrigar que:
 
-$$f''_0(0) = 0 $$
+$$f''_0(0) = 0$$
 
-$$f''_{n-1}(1) = 0 $$
-
-
+$$f''_{n-1}(1) = 0$$
 
 Perceba que há uma falha em nossa construção, estamos ignorando completamente os $x_i$. Isso é fácil de resolver no entanto, se você quer calcular o valor de $x_i \leq x \leq x_{i+1}$, basta considerar:
 
-$$ f_i(\frac{x - x_i}{x_{i+1} - x_i})$$
+$$f_i(\frac{x - x_i}{x_{i+1} - x_i})$$
 
 Mas não vamos nos preocupar muito com isso, não virá ao caso com os nossos problemas.
 
@@ -99,13 +97,13 @@ Será que conseguimos calcular rapidamente os coeficientes das nossas funções 
 
 Usando as 4 primeiras equações acima temos:
 
-$$ f_i(0) = y_i = a_i $$
+$$f_i(0) = y_i = a_i$$
 
-$$ f_i(1) = y_{i+1} = a_i + b_i + c_i + d_i $$
+$$f_i(1) = y_{i+1} = a_i + b_i + c_i + d_i$$
 
-$$ f_i'(0) = D_i = b_i $$
+$$f_i'(0) = D_i = b_i$$
 
-$$ f_i'(1) = D_{i+1} = b_i + 2c_i + 3d_i $$
+$$f_i'(1) = D_{i+1} = b_i + 2c_i + 3d_i$$
 
 Logo, resolvendo para $a_i,b_i,c_i,d_i$ obtemos:
 
