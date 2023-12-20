@@ -73,9 +73,9 @@ $$  f_i(0) = y_i $$
 
 $$  f_i(1) = y_{i+1} $$
 
-$$  f'_{i}(1) = f'_{i+1}(0) $$
+$$  f'_i(1) = f'_{i+1}(0) $$
 
-$$  f''_{i}(1) = f''_{i+1}(0) $$
+$$  f''_i(1) = f''_{i+1}(0) $$
 
 Para que a curva seja **natural**, vamos obrigar que:
 
@@ -105,7 +105,7 @@ $$ f_i(1) = y_{i+1} = a_i + b_i + c_i + d_i $$
 
 $$ f_i'(0) = D_i = b_i $$
 
-$$ f_{i}'(1) = D_{i+1} = b_i + 2c_i + 3d_i $$
+$$ f_i'(1) = D_{i+1} = b_i + 2c_i + 3d_i $$
 
 Logo, resolvendo para $a_i,b_i,c_i,d_i$ obtemos:
 
@@ -129,12 +129,12 @@ $$ D_{i-1} + 4D_i +D_{i+1} = 3(y_{i+1} - y{i-1}) $$
 
 Já que queremos que as segundas derivadas sejam contínuas temos:
 $$ f''_i(x) = 2c_i + 6d_i $$
-$$ f''_{i-1}(1) = 2c_{i-1} + 6d_{i-1} = 2c_i = f''_{i}(0)$$
+$$ f''_{i-1}(1) = 2c_{i-1} + 6d_{i-1} = 2c_i = f''_i(0)$$
 $$ c_{i-1} + 3d_{i-1} = c_i $$
 
-Podemos usar as equações do **Problema 1** para obter, substituindo $c_{i-1},d_{i-1},c_{i}$:
+Podemos usar as equações do **Problema 1** para obter, substituindo $c_{i-1},d_{i-1},c_i$:
 
-$$ 3\cdot(y_{i} - y_{i-1}) -D_{i} - 2D_{i-1} + 3\cdot(- 2\cdot(y_{i-1} - y_{i}) + D_{i} + D_{i-1}) =$$ 
+$$ 3\cdot(y_i - y_{i-1}) -D_i - 2D_{i-1} + 3\cdot(- 2\cdot(y_{i-1} - y_i) + D_i + D_{i-1}) =$$ 
 $$ = 3\cdot(y_{i+1} - y_i) -D_{i+1} - 2D_i$$
 
 E com bastante manipulação isso se torna justamente:
