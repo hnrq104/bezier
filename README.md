@@ -62,17 +62,25 @@ Faremos uma coisa levemente diferente aqui, para isso, vamos fazer algumas supos
 Queremos interpolar $n+1$ pontos $(x_i,y_i), i = 0,1, ...n$ em uma curva suave que será a junção de várias funções cúbicas menores.
 
 Definiremos $n$ funções cúbicas da seguinte forma:
+
 $$ f_i(x) = a_i + b_ix + c_ix^2 + d_ix^3$$
+
 Para $i = 0,1,2,...,n-1$
 
 Satisfazendo as seguintes propriedades:
+
 $$  f_i(0) = y_i $$
+
 $$  f_i(1) = y_{i+1} $$
+
 $$  f'_{i}(1) = f'_{i+1}(0) $$
+
 $$  f''_{i}(1) = f''_{i+1}(0) $$
 
 Para que a curva seja **natural**, vamos obrigar que:
+
 $$f''_0(0) = 0 $$
+
 $$f''_{n-1}(1) = 0 $$
 
 
@@ -92,8 +100,11 @@ Será que conseguimos calcular rapidamente os coeficientes das nossas funções 
 Usando as 4 primeiras equações acima temos:
 
 $$ f_i(0) = y_i = a_i $$
+
 $$ f_i(1) = y_{i+1} = a_i + b_i + c_i + d_i $$
+
 $$ f_i'(0) = D_i = b_i $$
+
 $$ f_{i}'(1) = D_{i+1} = b_i + 2c_i + 3d_i $$
 
 Logo, resolvendo para $a_i,b_i,c_i,d_i$ obtemos:
@@ -107,6 +118,7 @@ Portanto, se temos todos os valores $y_i$ e $D_i$, conseguimos calcular os $4n$ 
 #### Problema 2.
 
 Vamos mostrar, uma equação muito linda. Para $i = 1,2,...,n-1$
+
 
 $$ D_{i-1} + 4D_i +D_{i+1} = 3(y_{i+1} - y{i-1}) $$
 
